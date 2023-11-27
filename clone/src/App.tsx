@@ -1,10 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Layout from './components/layout';
 import ErrorPage from './router/error_page';
-import Home from './router/home';
-import Profile from './router/profile';
 import Login from './router/login';
 import CreateAccount from './router/create_account';
+import Home from './router/home';
+import Profile from './router/profile';
+import { GlobalStyle } from './components/styled';
+import LoadingScreen from './components/loading';
 
 const router = createBrowserRouter([
   {
@@ -34,9 +37,21 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const init = async () => {
+    //wait for firebase
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
   return (
     <>
-      <RouterProvider router={router} />
+      <GlobalStyle />
+      {isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
     </>
   );
 }
