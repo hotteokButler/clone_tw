@@ -9,6 +9,7 @@ import Profile from './router/profile';
 import { GlobalStyle } from './components/styled';
 import LoadingScreen from './components/loading';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -36,16 +37,19 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const init = async () => {
     //wait for firebase
+
     setIsLoading(false);
   };
 
   useEffect(() => {
-    init();
+    init().then((res) => console.log(res));
   }, []);
 
   return (
