@@ -9,7 +9,6 @@ import Profile from './router/profile';
 import { GlobalStyle } from './components/styled';
 import LoadingScreen from './components/loading';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,18 +25,15 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: '/login',
     element: <Login />,
   },
   {
-    path: '/create-account',
+    path: '/sign-in',
     element: <CreateAccount />,
   },
 ]);
-
-
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

@@ -11,10 +11,8 @@ import {
   MainTitle,
 } from '../components/styled';
 import { useState } from 'react';
-import { firebaseApp } from '../app/firebase_init';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-
-const auth = getAuth(firebaseApp);
+import { auth } from '../app/firebase_init';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -47,12 +45,14 @@ function CreateAccount() {
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true);
     if (isLoading || user.name === '' || user.email === '' || user.password === '') return;
 
     try {
       const credential = await createUserWithEmailAndPassword(auth, user.email, user.password);
-
+      console.log(credential);
       await updateProfile(credential.user, { displayName: user.name });
+
       navigate('/');
     } catch (err) {
       //set error
