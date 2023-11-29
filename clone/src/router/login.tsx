@@ -13,7 +13,7 @@ import {
 } from '../components/styled';
 import React, { useState } from 'react';
 import { auth } from '../app/firebase_init';
-import { signInWithEmailAndPassword, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
 function Login() {
@@ -74,16 +74,19 @@ function Login() {
   const handleOtherMethod = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     let id;
+    let provider;
     if (event.target instanceof Element) {
       id = event.target.id;
     }
     try {
       if (id === 'github') {
-        const provider = new GithubAuthProvider();
+        provider = new GithubAuthProvider();
         await signInWithPopup(auth, provider);
       } else if (id == 'google') {
+        provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
       }
-      navigate('');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
@@ -119,30 +122,15 @@ function Login() {
           />
         </AccountInput>
         {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
-        <SubmitBtn
-          key="submit"
-          $bg_color="#ff927e"
-          $color="#fff"
-          $margin="0 auto 1rem"
-          $padding="0 0.5rem"
-          $line_height="55px"
-        >
+        <SubmitBtn $bg_color="#ff927e" $color="#fff" $margin="0 auto 1rem" $padding="0 0.5rem" $line_height="55px">
           {isLoading ? '😎loading..' : '로그인'}
         </SubmitBtn>
 
-        <SwitcherBtn
-          key="sign_in"
-          id="sign_in"
-          onClick={handleLink}
-          $margin="0 auto 1rem"
-          $line_height="50px"
-          $padding="0 0.5rem"
-        >
+        <SwitcherBtn id="sign_in" onClick={handleLink} $margin="0 auto 1rem" $line_height="50px" $padding="0 0.5rem">
           😮Don't have an account?
         </SwitcherBtn>
 
         <SwitcherBtn
-          key="github"
           id="github"
           onClick={handleOtherMethod}
           $margin="0 auto 1rem"
@@ -151,6 +139,17 @@ function Login() {
         >
           <Logo src="/asset/img/github-logo.svg" $width="30px" />
           &nbsp; Continue with Github
+        </SwitcherBtn>
+
+        <SwitcherBtn
+          id="google"
+          onClick={handleOtherMethod}
+          $margin="0 auto 1rem"
+          $line_height="50px"
+          $padding="0 0.5rem"
+        >
+          <Logo src="/asset/img/google-logo.png" $width="28px" />
+          &nbsp; Continue with Google
         </SwitcherBtn>
       </AccountForm>
     </AccountWrap>
