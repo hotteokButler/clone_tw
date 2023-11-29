@@ -65,7 +65,7 @@ export const Label = styled.label<Font>`
   line-height: ${(props) => props.line_height || 'inherit'};
 `;
 
-export const SubmitBtn = styled.button<ButtonType>`
+export const BasicBtn = styled.button<ButtonType>`
   display: inline-block;
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
@@ -82,6 +82,7 @@ export const SubmitBtn = styled.button<ButtonType>`
     opacity: 0.4;
   }
 `;
+export const SubmitBtn = styled(BasicBtn)``;
 
 export const MainTitle = styled.h1<Font>`
   margin: 2rem auto;
