@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <h2>Home</h2>
-      <BasicBtn bg_color="#ff927e" padding="12px 20px" color="#fff" margin="0 auto 1rem" onClick={handleLogout}>
+      <BasicBtn $bg_color="#ff927e" $padding="12px 20px" $color="#fff" $margin="0 auto 1rem" onClick={handleLogout}>
         LOGOUT
       </BasicBtn>
     </>

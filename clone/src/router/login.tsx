@@ -9,10 +9,11 @@ import {
   MainTitle,
   ErrorTxt,
   SwitcherBtn,
+  Logo,
 } from '../components/styled';
 import React, { useState } from 'react';
 import { auth } from '../app/firebase_init';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
 function Login() {
@@ -69,10 +70,28 @@ function Login() {
       return;
     }
   };
+
+  const handleOtherMethod = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    let id;
+    if (event.target instanceof Element) {
+      id = event.target.id;
+    }
+    try {
+      if (id === 'github') {
+        const provider = new GithubAuthProvider();
+        await signInWithPopup(auth, provider);
+      } else if (id == 'google') {
+      }
+      navigate('');
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
-    <AccountWrap bg_color="#2b2b2b">
+    <AccountWrap $bg_color="#2b2b2b">
       <AccountForm onSubmit={onSubmit}>
-        <MainTitle font_weight={900} font_size="2rem">
+        <MainTitle $font_weight={900} $font_size="2rem">
           LOG IN
         </MainTitle>
         <AccountInput id="email">
@@ -99,13 +118,39 @@ function Login() {
             required
           />
         </AccountInput>
-        <SubmitBtn bg_color="#ff927e" padding="12px 20px" color="#fff" margin="0 auto 1rem">
+        {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
+        <SubmitBtn
+          key="submit"
+          $bg_color="#ff927e"
+          $color="#fff"
+          $margin="0 auto 1rem"
+          $padding="0 0.5rem"
+          $line_height="55px"
+        >
           {isLoading ? '😎loading..' : '로그인'}
         </SubmitBtn>
-        {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
 
-        <SwitcherBtn margin="0 auto 1rem" id="sign_in" onClick={handleLink}>
+        <SwitcherBtn
+          key="sign_in"
+          id="sign_in"
+          onClick={handleLink}
+          $margin="0 auto 1rem"
+          $line_height="50px"
+          $padding="0 0.5rem"
+        >
           😮Don't have an account?
+        </SwitcherBtn>
+
+        <SwitcherBtn
+          key="github"
+          id="github"
+          onClick={handleOtherMethod}
+          $margin="0 auto 1rem"
+          $line_height="50px"
+          $padding="0 0.5rem"
+        >
+          <Logo src="/asset/img/github-logo.svg" $width="30px" />
+          &nbsp; Continue with Github
         </SwitcherBtn>
       </AccountForm>
     </AccountWrap>

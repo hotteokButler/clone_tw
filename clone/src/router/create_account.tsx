@@ -82,9 +82,9 @@ function CreateAccount() {
   };
 
   return (
-    <AccountWrap bg_color="#2b2b2b">
+    <AccountWrap $bg_color="#2b2b2b">
       <AccountForm onSubmit={onSubmit}>
-        <MainTitle font_weight={900} font_size="2rem">
+        <MainTitle $font_weight={900} $font_size="2rem">
           🤗SIGN IN
         </MainTitle>
         {help.length > 1 && <HelpTxt>{help}</HelpTxt>}
@@ -124,11 +124,12 @@ function CreateAccount() {
             required
           />
         </AccountInput>
-        <SubmitBtn bg_color="#ff927e" padding="12px 20px" color="#fff" margin="1rem auto">
+        {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
+        <SubmitBtn $bg_color="#ff927e" $padding="1rem 0.5rem" $color="#fff" $margin="1rem auto">
           {isLoading ? '😎loading..' : '회원가입'}
         </SubmitBtn>
-        {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
-        <SwitcherBtn margin="0 auto 1rem" id="login" onClick={handleLink}>
+
+        <SwitcherBtn $margin="0 auto 1rem" $padding="1rem 0.5rem" id="login" onClick={handleLink}>
           😮Already have an account?
         </SwitcherBtn>
       </AccountForm>

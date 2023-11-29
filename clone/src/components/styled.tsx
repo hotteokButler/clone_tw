@@ -32,69 +32,78 @@ export const LoadingText = styled.span`
 // E: Loading
 
 // S : common
-export const Wrapper = styled.div<{ overflow?: boolean; bg_color?: string }>`
+export const Wrapper = styled.div<{ $overflow?: boolean; $bg_color?: string }>`
   width: 100vw;
   height: 100vh;
-  overflow: ${(props) => (props.overflow ? 'hidden' : 'visible')};
-  background: ${(props) => props.bg_color || '#fff'};
+  overflow: ${(props) => (props.$overflow ? 'hidden' : 'visible')};
+  background: ${(props) => props.$bg_color || '#fff'};
 `;
 
-export const FormElem = styled.form<{ width?: string }>`
-  width: ${(props) => props.width};
+export const FormElem = styled.form<{ $width?: string }>`
+  width: ${(props) => props.$width};
 `;
 
 export const InputWrap = styled.div<Font>`
   display: flex;
-  color: ${(props) => props.color || 'inherit'};
-  font-size: ${(props) => props.font_size || 'inherit'};
-  font-weight: ${(props) => props.font_weight || 'inherit'};
-  line-height: ${(props) => props.line_height || 'inherit'};
+  color: ${(props) => props.$color || 'inherit'};
+  font-size: ${(props) => props.$font_size || 'inherit'};
+  font-weight: ${(props) => props.$font_weight || 'inherit'};
+  line-height: ${(props) => props.$line_height || 'inherit'};
 `;
 
 export const Input = styled.input<Font>`
-  color: ${(props) => (props.color ? props.color : 'inherit')};
-  font-size: ${(props) => props.font_size || 'inherit'};
-  font-weight: ${(props) => props.font_weight || 'inherit'};
-  line-height: ${(props) => props.line_height || 'inherit'};
+  color: ${(props) => props.$color || 'inherit'};
+  font-size: ${(props) => props.$font_size || 'inherit'};
+  font-weight: ${(props) => props.$font_weight || 'inherit'};
+  line-height: ${(props) => props.$line_height || 'inherit'};
 `;
 
 export const Label = styled.label<Font>`
-  color: ${(props) => (props.color ? props.color : 'inherit')};
-  font-size: ${(props) => props.font_size || 'inherit'};
-  font-weight: ${(props) => props.font_weight || 'inherit'};
-  line-height: ${(props) => props.line_height || 'inherit'};
+  color: ${(props) => props.$color || 'inherit'};
+  font-size: ${(props) => props.$font_size || 'inherit'};
+  font-weight: ${(props) => props.$font_weight || 'inherit'};
+  line-height: ${(props) => props.$line_height || 'inherit'};
 `;
 
 export const BasicBtn = styled.button<ButtonType>`
   display: inline-block;
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
   outline: none;
   border: none;
   border-radius: 4px;
   background: transparent;
-  background-color: ${(props) => props.bg_color || 'transperent'};
-  color: ${(props) => props.color || 'inherit'};
-  font-size: ${(props) => props.font_size || 'inherit'};
+  background-color: ${(props) => props.$bg_color || 'transperent'};
+  color: ${(props) => props.$color || 'inherit'};
+  font-size: ${(props) => props.$font_size || 'inherit'};
   font-weight: bold;
+  line-height: ${(props) => props.$line_height || 'inherit'};
   cursor: pointer;
   &:hover {
     opacity: 0.4;
   }
 `;
-export const SubmitBtn = styled(BasicBtn)``;
+export const SubmitBtn = styled(BasicBtn)`
+  font-weight: bold;
+`;
 
 export const SwitcherBtn = styled(BasicBtn)`
-border: 1px solid #ddd;
+  border: 1px solid #ddd;
+`;
+
+export const Logo = styled.img<{ $width?: string }>`
+  width: ${(props) => props.$width || 'auto'};
+  height: auto;
+  vertical-align: middle;
 `;
 
 export const MainTitle = styled.h1<Font>`
   margin: 2rem auto;
   text-align: center;
-  color: ${(props) => (props.color ? props.color : 'inherit')};
-  font-size: ${(props) => props.font_size || 'inherit'};
-  font-weight: ${(props) => props.font_weight || 'inherit'};
-  line-height: ${(props) => props.line_height || 'inherit'};
+  color: ${(props) => props.$color || 'inherit'};
+  font-size: ${(props) => props.$font_size || 'inherit'};
+  font-weight: ${(props) => props.$font_weight || 'inherit'};
+  line-height: ${(props) => props.$line_height || 'inherit'};
 `;
 
 export const HelpTxt = styled.span`
@@ -132,7 +141,6 @@ export const AccountForm = styled(FormElem)`
   & > button {
     width: 70%;
     border-radius: 5rem;
-    padding: 1rem 0.5rem;
   }
 `;
 
