@@ -84,6 +84,10 @@ export const BasicBtn = styled.button<ButtonType>`
 `;
 export const SubmitBtn = styled(BasicBtn)``;
 
+export const SwitcherBtn = styled(BasicBtn)`
+border: 1px solid #ddd;
+`;
+
 export const MainTitle = styled.h1<Font>`
   margin: 2rem auto;
   text-align: center;
@@ -96,10 +100,18 @@ export const MainTitle = styled.h1<Font>`
 export const HelpTxt = styled.span`
   display: block;
   word-break: keep-all;
-  color: #ffa9a9;
+  color: #fe7b7b;
   font-size: 12px;
-  font-weight: 300;
   padding: 0.2rem;
+`;
+
+export const ErrorTxt = styled.p`
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+  color: #fe7b7b;
+  font-size: 14px;
+  font-weight: 700;
 `;
 // E : common
 
@@ -117,12 +129,10 @@ export const AccountForm = styled(FormElem)`
   text-align: center;
   border-radius: 0.5em;
   box-shadow: 6px 6px 0px rgba(255, 169, 169, 0.6);
-
   & > button {
     width: 70%;
     border-radius: 5rem;
-    padding: 0.8rem;
-    margin: 0 auto 2rem;
+    padding: 1rem 0.5rem;
   }
 `;
 

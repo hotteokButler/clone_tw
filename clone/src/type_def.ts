@@ -12,6 +12,6 @@ export type ButtonType = {
   bg_color?: string;
   color?: string;
   font_size?: string | number;
-  padding: string | number;
-  margin: string;
+  padding?: string | number;
+  margin?: string;
 };

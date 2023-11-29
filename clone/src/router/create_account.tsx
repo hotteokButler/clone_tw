@@ -9,10 +9,13 @@ import {
   SubmitBtn,
   HelpTxt,
   MainTitle,
+  ErrorTxt,
+  SwitcherBtn,
 } from '../components/styled';
 import { useState } from 'react';
 import { auth } from '../app/firebase_init';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -46,6 +49,7 @@ function CreateAccount() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
+    setError('');
     if (isLoading || user.name === '' || user.email === '' || user.password === '') return;
 
     try {
@@ -55,11 +59,25 @@ function CreateAccount() {
       navigate('/');
     } catch (err) {
       //set error
-      alert('error!!!');
+      if (err instanceof FirebaseError) {
+        setError(err.message);
+      }
       setUser(() => ({ name: '', email: '', password: '' }));
-      console.log(err);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleLink = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    let id;
+    if (event.target instanceof Element) {
+      id = event.target.id;
+    }
+    if (id === 'login') {
+      navigate('/login');
+    } else {
+      return;
     }
   };
 
@@ -106,9 +124,13 @@ function CreateAccount() {
             required
           />
         </AccountInput>
-        <SubmitBtn bg_color="#ff927e" padding="12px 20px" color="#fff" margin="1rem 0 0">
+        <SubmitBtn bg_color="#ff927e" padding="12px 20px" color="#fff" margin="1rem auto">
           {isLoading ? '😎loading..' : '회원가입'}
         </SubmitBtn>
+        {error ? <ErrorTxt>❌{error}</ErrorTxt> : null}
+        <SwitcherBtn margin="0 auto 1rem" id="login" onClick={handleLink}>
+          😮Already have an account?
+        </SwitcherBtn>
       </AccountForm>
     </AccountWrap>
   );
