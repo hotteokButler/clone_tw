@@ -50,12 +50,13 @@ function CreateAccount() {
 
     try {
       const credential = await createUserWithEmailAndPassword(auth, user.email, user.password);
-      console.log(credential);
       await updateProfile(credential.user, { displayName: user.name });
-
+      alert(`${user.name}님 회원가입이 완료되었습니다😁`);
       navigate('/');
     } catch (err) {
       //set error
+      alert('error!!!');
+      setUser(() => ({ name: '', email: '', password: '' }));
       console.log(err);
     } finally {
       setIsLoading(false);

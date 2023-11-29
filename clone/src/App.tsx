@@ -8,11 +8,16 @@ import Home from './router/home';
 import Profile from './router/profile';
 import { GlobalStyle } from './components/styled';
 import LoadingScreen from './components/loading';
+import ProtectedRoute from './components/protected-route';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
