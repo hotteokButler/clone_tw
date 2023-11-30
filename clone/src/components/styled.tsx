@@ -167,7 +167,6 @@ export const AccountInput = styled(InputWrap)`
 // S : Main Layout
 export const MainWrapper = styled(Wrapper)`
   display: grid;
-  gap: 16px;
   grid-template-columns: 2fr 4fr;
   max-width: 860px;
 `;
@@ -197,11 +196,41 @@ export const MenuLi = styled.li`
   }
 `;
 
-export const TextArea = styled.textarea``;
+export const TextArea = styled.textarea`
+  width: 100%;
+  margin: 0 auto 0.3rem;
+  border-radius: 5px;
+  border: 2px solid #9494f1;
+  padding: 1rem;
+  resize: none;
+  min-height: 100px;
+  &::placeholder {
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  &:focus {
+    outline: none;
+    border-color: #955fd7;
+  }
+`;
 
-export const AttachFileBtnWrap = styled.div``;
+export const AttachFileBtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const AttachFileBtn = styled(BasicBtn)`
+  font-size: 1.2rem;
+  color: #9494f1;
+`;
+export const PostBtn = styled(AttachFileBtn)`
+  span {
+    display: inline-block;
+    margin: 0px 0px 0px 4px;
+    font-size: 1rem;
+    vertical-align: top;
+  }
 `;
 
 // E : Main Layout
