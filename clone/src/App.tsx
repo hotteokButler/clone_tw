@@ -43,14 +43,12 @@ const router = createBrowserRouter([
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  const init = async () => {
-    //wait for firebase
-
+  const init = () => {
     setIsLoading(false);
   };
 
   useEffect(() => {
-    init().then((res) => console.log(res));
+    init();
   }, []);
 
   return (

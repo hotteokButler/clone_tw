@@ -162,4 +162,28 @@ export const AccountInput = styled(InputWrap)`
   }
 `;
 
-// E : create_account
+// E : create_account 
+
+// S : Main Layout
+export const MainWrapper = styled(Wrapper)`
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 2fr 4fr;
+  max-width: 860px;
+`;
+export const Contents = styled.div`
+  padding: 1rem;
+`;
+export const MenuWrapper = styled.nav`
+  padding: 1rem;
+
+  border-right: 1px solid #ddd;
+`;
+export const MenuUl = styled.ul``;
+export const MenuLi = styled.li`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+// E : Main Layout

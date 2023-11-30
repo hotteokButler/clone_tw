@@ -1,12 +1,16 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Contents, MainWrapper } from './styled';
+import Menu from './Menu';
 
 function Layout() {
   return (
-    <div id="main-wrapper">
-      <h1>Layout</h1>
-      <Outlet/>
-    </div>
+    <MainWrapper id="main-wrapper" $overflow={true}>
+      <Menu/>
+      {/* contents */}
+      <Contents>
+        <Outlet />
+      </Contents>
+    </MainWrapper>
   );
 }
 

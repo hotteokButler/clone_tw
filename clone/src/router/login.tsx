@@ -17,6 +17,7 @@ import { signInWithEmailAndPassword, signInWithPopup, GithubAuthProvider, Google
 import { FirebaseError } from 'firebase/app';
 
 function Login() {
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({ email: '', password: '' });
@@ -46,6 +47,7 @@ function Login() {
     if (isLoading || user.email === '' || user.password === '') return;
     try {
       await signInWithEmailAndPassword(auth, user.email, user.password);
+
       navigate('/');
     } catch (err) {
       //set error
@@ -61,8 +63,8 @@ function Login() {
   const handleLink = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     let id;
-    if (event.target instanceof Element) {
-      id = event.target.id;
+    if (event.currentTarget instanceof Element) {
+      id = event.currentTarget.id;
     }
     if (id === 'sign_in') {
       navigate('/sign-in');
@@ -91,6 +93,7 @@ function Login() {
       console.log(err);
     }
   };
+
   return (
     <AccountWrap $bg_color="#2b2b2b">
       <AccountForm onSubmit={onSubmit}>
