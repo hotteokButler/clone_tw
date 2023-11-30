@@ -162,7 +162,7 @@ export const AccountInput = styled(InputWrap)`
   }
 `;
 
-// E : create_account 
+// E : create_account
 
 // S : Main Layout
 export const MainWrapper = styled(Wrapper)`
@@ -183,7 +183,25 @@ export const MenuUl = styled.ul``;
 export const MenuLi = styled.li`
   display: flex;
   align-items: center;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: 0.4s;
   cursor: pointer;
+  span {
+    display: inline-block;
+    margin: 0 7px;
+  }
+  &:hover {
+    color: tomato;
+  }
+`;
+
+export const TextArea = styled.textarea``;
+
+export const AttachFileBtnWrap = styled.div``;
+
+export const AttachFileBtn = styled(BasicBtn)`
 `;
 
 // E : Main Layout

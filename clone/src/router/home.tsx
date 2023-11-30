@@ -1,10 +1,11 @@
+import PostForm from "../components/post_form";
 
 
 function Home() {
 
   return (
     <>
-      <h2>Home</h2>
+      <PostForm/>
     </>
   );
 }

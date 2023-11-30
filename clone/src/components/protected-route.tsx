@@ -16,7 +16,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     });
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 600);
   }, [isLoggedIn]);
 
   if (isLoading) {
