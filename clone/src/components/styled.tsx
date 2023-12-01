@@ -172,11 +172,11 @@ export const MainWrapper = styled(Wrapper)`
 `;
 export const Contents = styled.div`
   padding: 1rem;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 `;
 export const MenuWrapper = styled.nav`
   padding: 1rem;
-
-  border-right: 1px solid #ddd;
 `;
 export const MenuUl = styled.ul``;
 export const MenuLi = styled.li`
@@ -218,19 +218,36 @@ export const TextArea = styled.textarea`
 export const AttachFileBtnWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #ddd;
 `;
 
 export const AttachFileBtn = styled(BasicBtn)`
   font-size: 1.2rem;
   color: #9494f1;
+  span {
+    display: inline-block;
+    font-size: 0.7rem;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-left: 5px;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
-export const PostBtn = styled(AttachFileBtn)`
+export const PostBtn = styled(BasicBtn)`
+  font-size: 1.2rem;
+  color: #9494f1;
   span {
     display: inline-block;
     margin: 0px 0px 0px 4px;
     font-size: 1rem;
     vertical-align: top;
   }
+`;
+
+export const MainContent = styled.div`
+  min-height: 100%;
 `;
 
 // E : Main Layout

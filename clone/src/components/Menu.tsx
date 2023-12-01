@@ -8,9 +8,12 @@ function Menu() {
   const navigate = useNavigate();
 
   const handleLogout = (e: React.MouseEvent<HTMLElement>) => {
-    auth.signOut();
-    alert('로그아웃 되었습니다😊');
-    navigate('/login');
+    const askLogout = confirm('Are you sure to log out?😥');
+    if (askLogout) {
+      auth.signOut();
+      alert('로그아웃 되었습니다😊');
+      navigate('/login');
+    }
   };
 
   const handleLink = (event: React.MouseEvent<HTMLElement>) => {
