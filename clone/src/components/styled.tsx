@@ -39,8 +39,9 @@ export const Wrapper = styled.div<{ $overflow?: boolean; $bg_color?: string }>`
   background: ${(props) => props.$bg_color || '#fff'};
 `;
 
-export const FormElem = styled.form<{ $width?: string }>`
+export const FormElem = styled.form<{ $width?: string; $max_height?: string }>`
   width: ${(props) => props.$width};
+  max-height: ${(props) => props.$max_height || 'auto'};
 `;
 
 export const InputWrap = styled.div<Font>`
@@ -168,6 +169,7 @@ export const AccountInput = styled(InputWrap)`
 export const MainWrapper = styled(Wrapper)`
   display: grid;
   grid-template-columns: 2fr 4fr;
+  grid-template-rows: 100%;
   max-width: 860px;
 `;
 export const Contents = styled.div`
@@ -248,7 +250,29 @@ export const PostBtn = styled(BasicBtn)`
 `;
 
 export const MainContent = styled.div`
-  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  gap: 15px;
+  height: 100%;
+  overflow: hidden;
 `;
 
 // E : Main Layout
+
+// S :Timeline
+
+export const TimelineWrap = styled.div`
+  height: 100%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #9494f1; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+`;
+// E :Timeline

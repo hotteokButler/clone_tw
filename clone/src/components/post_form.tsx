@@ -71,7 +71,7 @@ function PostForm() {
   };
   return (
     <>
-      <FormElem onSubmit={onSubmit}>
+      <FormElem onSubmit={onSubmit} $max_height='155px'>
         <Input id="file" type="file" accept="image/*" hidden ref={inputRef} onChange={onFileChange} />
         <TextArea
           value={tweet}
