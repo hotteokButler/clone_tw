@@ -268,11 +268,38 @@ export const TimelineWrap = styled.div`
     width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #9494f1; /* 스크롤바 색상 */
-    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+    transition: 0.4s;
+    background: transparent; /* 스크롤바 색상 */
+    border-radius: 5rem;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: #9494f1; /* 스크롤바 색상 */
+    }
+  }
 `;
 // E :Timeline
+
+// S:Tweet
+
+export const TweetWrap = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+  padding: 20px;
+  background-color: transparent;
+  &:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+  }
+`;
+
+export const TweetCloumn = styled.div``;
+export const UserName = styled.p``;
+export const Payload = styled.p``;
+
+export const TweetPhoto = styled.img`
+  width: 100%;
+`;
+// E:Tweet

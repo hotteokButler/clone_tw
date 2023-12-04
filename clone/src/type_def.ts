@@ -16,3 +16,15 @@ export type ButtonType = {
   $margin?: string;
   $line_height?: string | number;
 };
+
+
+
+// tweet
+export interface ITweet {
+  id: string;
+  createdAt: number;
+  photo?: string;
+  tweet: string;
+  user_id: string;
+  user_name: string;
+}
