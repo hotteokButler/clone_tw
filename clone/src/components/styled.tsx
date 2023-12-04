@@ -233,6 +233,7 @@ export const AttachFileBtn = styled(BasicBtn)`
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
   }
 `;
 export const PostBtn = styled(BasicBtn)`
