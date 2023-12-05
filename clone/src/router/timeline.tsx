@@ -1,4 +1,4 @@
-import { collection, getDocs, onSnapshot, orderBy, query, unsubscribe } from 'firebase/firestore';
+import { collection, getDocs, limit, onSnapshot, orderBy, query, unsubscribe } from 'firebase/firestore';
 import { TimelineWrap } from '../components/styled';
 import { useState, useEffect } from 'react';
 import { db } from '../app/firebase_init';
@@ -9,7 +9,7 @@ import { Unsubscribe } from 'firebase/auth';
 function Timeline() {
   const [tweets, setTweet] = useState<ITweet[] | undefined>([]);
 
-  const tweetQuery = query(collection(db, 'tweet'), orderBy('createdAt'));
+  const tweetQuery = query(collection(db, 'tweet'), orderBy('createdAt'),limit(25));
   // const fetchTweets = async () => {
   //   const snapshot = await getDocs(tweetQuery);
   //   const tweets = snapshot.docs.map((doc) => {
