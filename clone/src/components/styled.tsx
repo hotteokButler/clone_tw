@@ -286,6 +286,7 @@ export const TimelineWrap = styled.div`
 // S:Tweet
 
 export const TweetWrap = styled.div`
+  position: relative;
   display: grid;
   grid-template-rows: 1fr 7fr;
   padding: 20px;
@@ -301,5 +302,13 @@ export const Payload = styled.p``;
 
 export const TweetPhoto = styled.img`
   width: 100%;
+`;
+
+export const DeleteBtn = styled(BasicBtn)`
+  position: absolute;
+  right: 0;
+  top: 1%;
+  font-size: 2rem;
+  color: #9494f1;
 `;
 // E:Tweet
