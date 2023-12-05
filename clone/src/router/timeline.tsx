@@ -1,9 +1,10 @@
-import { collection, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, orderBy, query, unsubscribe } from 'firebase/firestore';
 import { TimelineWrap } from '../components/styled';
 import { useState, useEffect } from 'react';
 import { db } from '../app/firebase_init';
 import { ITweet } from '../type_def';
 import Tweet from '../components/tweet';
+import { Unsubscribe } from 'firebase/auth';
 
 function Timeline() {
   const [tweets, setTweet] = useState<ITweet[] | undefined>([]);
@@ -25,7 +26,9 @@ function Timeline() {
   // };
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(tweetQuery, (snapshot) => {
+    
+    let unsubscribe: Unsubscribe | null = null;
+    unsubscribe = onSnapshot(tweetQuery, (snapshot) => {
       const tweets = snapshot.docs.map((doc) => {
         const { createdAt, photo, tweet, user_id, user_name } = doc.data();
         return {
@@ -40,7 +43,7 @@ function Timeline() {
       setTweet(tweets);
     });
 
-    return () => unsubscribe();
+    return () => {unsubscribe && unsubscribe()};
   }, []);
 
   return (
