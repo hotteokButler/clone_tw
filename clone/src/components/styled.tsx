@@ -312,3 +312,40 @@ export const DeleteBtn = styled(BasicBtn)`
   color: #9494f1;
 `;
 // E:Tweet
+
+// S: Profile
+export const ProfileWrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ProfileUpload = styled(Label)`
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  margin:  0 auto 0.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  img {
+    width: 100%;
+  }
+`;
+
+export const ProfileImg = styled.img``;
+
+export const ProfileInput = styled(Input)`
+  display: none;
+`;
+
+export const ProfileName = styled.span`
+`
+
+
+// E: Profile
